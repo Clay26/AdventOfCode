@@ -1,17 +1,10 @@
-package main
+package dayone
 
 import (
 	"AoC2023/utils"
 	"regexp"
 	"strconv"
 )
-
-func main() {
-	pt1Ans := Part1("input_1.txt")
-	pt2Ans := Part2("input_1.txt")
-	utils.PrintAnswer(1, 1, pt1Ans)
-	utils.PrintAnswer(1, 2, pt2Ans)
-}
 
 func Part1(inputFileName string) int {
 	input, err := utils.ReadFile(inputFileName)
@@ -53,7 +46,7 @@ func findAllNums(inputLine string) []string {
 }
 
 func findAllNumsAndWords(inputLine string) []string {
-	numRe := regexp.MustCompile(`(\d|one|two|three|four|five|six|seven|eight|nine)`)
+	numRe := regexp.MustCompile(`(\d|zero|one|two|three|four|five|six|seven|eight|nine)`)
 	return numRe.FindAllString(inputLine, -1)
 }
 
