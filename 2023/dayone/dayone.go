@@ -31,13 +31,51 @@ func Part2(inputFileName string) int {
 
 	sum := 0
 	for _, inputLine := range input {
-		sum += convertFoundStrToNum(findAllNumsAndWords(inputLine))
+		wordsReplaced := true
+		for wordsReplaced {
+			inputLine, wordsReplaced = replaceWords(inputLine)
+		}
+		sum += convertFoundStrToNum(findAllNums(inputLine))
 		if err != nil {
 			return -1
 		}
 	}
 
 	return sum
+}
+
+func replaceWords(inputLine string) (string, bool) {
+	numRe := regexp.MustCompile(`(zero|one|two|three|four|five|six|seven|eight|nine)`)
+	if !numRe.MatchString(inputLine) {
+		return inputLine, false
+	}
+
+	return numRe.ReplaceAllStringFunc(inputLine, func(match string) string {
+		switch match {
+		case "zero":
+			return "0ero"
+		case "one":
+			return "1ne"
+		case "two":
+			return "2wo"
+		case "three":
+			return "3hree"
+		case "four":
+			return "4our"
+		case "five":
+			return "5ive"
+		case "six":
+			return "6ix"
+		case "seven":
+			return "7even"
+		case "eight":
+			return "8ight"
+		case "nine":
+			return "9ine"
+		default:
+			return match
+		}
+	}), true
 }
 
 func findAllNums(inputLine string) []string {
