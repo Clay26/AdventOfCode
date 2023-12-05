@@ -11,6 +11,7 @@ func ReadFile(inputFileName string) ([]string, error) {
 	_, err := os.Stat(inputFileName)
 	if errors.Is(err, os.ErrNotExist) {
 		fmt.Println("File does not exist")
+		return nil, err
 	}
 
 	file, err := os.Open(inputFileName)
