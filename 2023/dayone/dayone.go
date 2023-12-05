@@ -15,9 +15,6 @@ func Part1(inputFileName string) int {
 	sum := 0
 	for _, inputLine := range input {
 		sum += convertFoundStrToNum(findAllNums(inputLine))
-		if err != nil {
-			return -1
-		}
 	}
 
 	return sum
