@@ -30,6 +30,7 @@ func ReadFile(inputFileName string) ([]string, error) {
 	// Check for errors during scanning
 	if err := scanner.Err(); err != nil {
 		fmt.Println("Error reading from file:", err)
+		return nil, err
 	}
 
 	return input, nil
