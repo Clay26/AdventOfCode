@@ -1,7 +1,7 @@
 package dayone
 
 import (
-	"AoC2023/utils"
+	"aoc2023/utils"
 	"regexp"
 	"strconv"
 )
